@@ -14,15 +14,38 @@ namespace laba2
     {
         Computer computer;
 
+        public struct CPU
+        {
+            public string creator;
+            public string series;
+            public string model;
+            public int cores;
+            public string clock;
+            public string architecture;
+            public int l1Cache;
+            public int l2Cache;
+            public int l3Cache;
+        }
+
+        public struct GPU
+        {
+            public string creator;
+            public string series;
+            public string model;
+            public int clock;
+            public string diretX;
+            public int GPURAM;
+        }
+
         public Form2()
         {
             InitializeComponent();
-            trackBar1.Scroll+= trackBar1_Scroll;
+            RamAmount.Scroll+= trackBar1_Scroll;
         }
 
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
-            label1.Text = String.Format($"Необходимое ОЗУ: {trackBar1.Value} ГБ");
+            label1.Text = String.Format($"Необходимое ОЗУ: {RamAmount.Value} ГБ");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,85 +57,74 @@ namespace laba2
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            label5.Text = String.Format($"Количество ядер: {trackBar2.Value}");
+            label5.Text = String.Format($"Количество ядер: {CoresChoose.Value}");
 
         }
 
         public void ToClass()
         {
             // type radiobutton
-            if (radioButton1.Checked)
+            computer.type = ComputerType.Text;
+
+            if (CreatorIntel.Checked)
             {
-                computer.type = radioButton1.Text;
+                computer.cpu.creator = CreatorIntel.Text;
             }
-            else if (radioButton2.Checked)
+            else if (CreatorAMD.Checked)
             {
-                computer.type = radioButton2.Text;
-            }
-            else if (radioButton3.Checked) 
-            {
-                computer.type = radioButton3.Text;
+                computer.cpu.creator = CreatorAMD.Text;
             }
 
-            if (radioButton7.Checked)
+            computer.cpu.series = SeriesChoose.Text;
+
+            computer.cpu.model = comboBox1.Text;
+
+            computer.cpu.cores = CoresChoose.Value;
+
+            computer.cpu.clock = ClockChoose.Text;
+
+            if (ArchitectureX32.Checked)
             {
-                computer.creator = radioButton5.Text;
+                computer.cpu.architecture = ArchitectureX32.Text;
             }
-            else if (radioButton6.Checked)
+            else if (ArchitectureX64.Checked)
             {
-                computer.creator = radioButton6.Text;
-            }
-
-            computer.series = comboBox1.Text;
-
-            computer.model = comboBox2.Text;
-
-            computer.cores = trackBar2.Value;
-
-            computer.clock = comboBox3.Text;
-
-            if (radioButton4.Checked)
-            {
-                computer.architecture = radioButton5.Text;
-            }
-            else if (radioButton5.Checked) 
-            {
-                computer.architecture = radioButton6.Text;
+                computer.cpu.architecture = ArchitectureX64.Text;
             }
 
             try
             {
-                computer.l1Cache = int.Parse(textBox1.Text);
-                computer.l2Cache = int.Parse(textBox2.Text);
-                computer.l3Cache = int.Parse(textBox3.Text);
+                computer.cpu.l1Cache = int.Parse(textBox1.Text);
+                computer.cpu.l2Cache = int.Parse(textBox2.Text);
+                computer.cpu.l3Cache = int.Parse(textBox3.Text);
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-            if (radioButton1.Checked)
+            if (MicroRadio.Checked)
             {
-                computer.size= radioButton1.Text;
+                computer.size = MicroRadio.Text;
             }
-            else if(radioButton2.Checked) 
+            else if (PortableRadio.Checked)
             {
-                computer.size = radioButton2.Text;
+                computer.size = PortableRadio.Text;
             }
-            else if(radioButton3.Checked)
+            else if (StandartRadio.Checked)
             {
-                computer.size = radioButton3.Text;
+                computer.size = StandartRadio.Text;
             }
 
-            computer.RAM = trackBar1.Value;
+            computer.RAM = RamAmount.Value;
 
-            if (checkBox1.Checked) 
+            if (checkBox1.Checked)
             {
-                computer.drive = radioButton1.Text;
+                computer.drive = checkBox1.Text;
             }
             else if (checkBox2.Checked)
             {
-                computer.drive = radioButton2.Text;
+                computer.drive = checkBox2.Text;
             }
             else if (checkBox1.Checked && checkBox2.Checked)
             {
@@ -121,31 +133,46 @@ namespace laba2
 
             computer.date = dateTimePicker1.Text;
 
-            
 
+            if (NvidiaGPU.Checked)
+            {
+                computer.gpu.creator = NvidiaGPU.Text;
+            }
+            else if (AmdGPU.Checked)
+            {
+                computer.gpu.creator = AmdGPU.Text;
+            }
+
+            computer.gpu.series = GPUSeries.Text;
+            computer.gpu.model = GPUModel.Text;
+            computer.gpu.clock = GpuClock.Value;
+
+            if (DiretXYes.Checked)
+            {
+                computer.gpu.diretX = DiretXYes.Text;
+            }
+            else if (DiretXNo.Checked)
+            {
+                computer.gpu.diretX = DiretXNo.Text;
+            }
+
+            computer.gpu.GPURAM = GpuRAM.Value;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             ToClass();
-            string str = computer.type + computer.creator + computer.series + computer.model + computer.cores + computer.clock + computer.architecture + computer.l1Cache + computer.l2Cache + computer.l3Cache + computer.size + computer.RAM + computer.drive + computer.date;
+            string str = computer.type + ' ' + computer.cpu.creator + ' ' + computer.cpu.series + ' ' + computer.cpu.model + ' ' + computer.cpu.cores + ' ' + computer.cpu.clock + ' ' + computer.cpu.architecture + ' ' + computer.cpu.l1Cache + ' ' + computer.cpu.l2Cache + ' ' + computer.cpu.l3Cache + ' ' + computer.size + ' ' + computer.RAM + ' ' + computer.drive + ' ' + computer.date + ' ' + computer.gpu.creator + ' ' + computer.gpu.series + ' ' + computer.gpu.model + ' ' + computer.gpu.clock + ' ' + computer.gpu.diretX + ' ' + computer.gpu.GPURAM;
             richTextBox2.Text = str;
         }
 
         public struct Computer
         {
-            public string type;
-            public string creator;
-            public string series;
-            public string model;
-            public int cores;
-            public string clock;
-            public string architecture;
-            public int l1Cache;
-            public int l2Cache;
-            public int l3Cache;
+            public CPU cpu;
+            public GPU gpu;
 
-            public string GPU;
+            public string type;
+            
             public string size;
             public int RAM;
             public string drive;
@@ -153,6 +180,7 @@ namespace laba2
 
 
         }
+
     }
 
    

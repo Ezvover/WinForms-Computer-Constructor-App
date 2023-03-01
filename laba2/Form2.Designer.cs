@@ -32,15 +32,15 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.trackBar1 = new System.Windows.Forms.TrackBar();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.RamAmount = new System.Windows.Forms.TrackBar();
+            this.GPUModel = new System.Windows.Forms.ComboBox();
+            this.MicroRadio = new System.Windows.Forms.RadioButton();
+            this.PortableRadio = new System.Windows.Forms.RadioButton();
+            this.StandartRadio = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ComputerType = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,16 +50,33 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.ArchitectureX64 = new System.Windows.Forms.RadioButton();
+            this.ArchitectureX32 = new System.Windows.Forms.RadioButton();
+            this.ClockChoose = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            this.CoresChoose = new System.Windows.Forms.TrackBar();
+            this.SeriesChoose = new System.Windows.Forms.ComboBox();
+            this.CreatorAMD = new System.Windows.Forms.RadioButton();
+            this.CreatorIntel = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.NvidiaGPU = new System.Windows.Forms.RadioButton();
+            this.AmdGPU = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.GPUSeries = new System.Windows.Forms.ComboBox();
+            this.GpuClock = new System.Windows.Forms.TrackBar();
+            this.DiretXYes = new System.Windows.Forms.RadioButton();
+            this.DiretXNo = new System.Windows.Forms.RadioButton();
+            this.GpuRAM = new System.Windows.Forms.TrackBar();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            ((System.ComponentModel.ISupportInitialize)(this.RamAmount)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoresChoose)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GpuClock)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GpuRAM)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -106,70 +123,70 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "ОЗУ:";
             // 
-            // trackBar1
+            // RamAmount
             // 
-            this.trackBar1.Location = new System.Drawing.Point(111, 513);
-            this.trackBar1.Maximum = 1024;
-            this.trackBar1.Minimum = 8;
-            this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(85, 45);
-            this.trackBar1.TabIndex = 11;
-            this.trackBar1.Value = 8;
-            this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
+            this.RamAmount.Location = new System.Drawing.Point(111, 513);
+            this.RamAmount.Maximum = 1024;
+            this.RamAmount.Minimum = 8;
+            this.RamAmount.Name = "RamAmount";
+            this.RamAmount.Size = new System.Drawing.Size(85, 45);
+            this.RamAmount.TabIndex = 11;
+            this.RamAmount.Value = 8;
+            this.RamAmount.Scroll += new System.EventHandler(this.trackBar1_Scroll);
             // 
-            // comboBox2
+            // GPUModel
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "NVIDIA RTX 2050",
-            "NVIDIA RTX 2060",
-            "NVIDIA RTX 2070",
-            "NVIDIA RTX 2080",
-            "NVIDIA RTX 4060",
-            "NVIDIA RTX 4070",
-            "NVIDIA RTX 4080",
-            "NVIDIA RTX A5000",
-            "NVIDIA RTX A5500",
-            "NVIDIA RTX A6000",
-            "NVIDIA RTX A6500 ADA",
-            "AMD Radeon Pro W6800"});
-            this.comboBox2.Location = new System.Drawing.Point(108, 431);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 23);
-            this.comboBox2.TabIndex = 12;
+            this.GPUModel.FormattingEnabled = true;
+            this.GPUModel.Items.AddRange(new object[] {
+            "2050",
+            "2060",
+            "2070",
+            "2080",
+            "4060",
+            "4070",
+            "4080",
+            "A5000",
+            "A5500",
+            "A6000",
+            "A6500 ADA",
+            "Radeon Pro W6800"});
+            this.GPUModel.Location = new System.Drawing.Point(1214, 224);
+            this.GPUModel.Name = "GPUModel";
+            this.GPUModel.Size = new System.Drawing.Size(121, 23);
+            this.GPUModel.TabIndex = 12;
             // 
-            // radioButton1
+            // MicroRadio
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(111, 579);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(56, 19);
-            this.radioButton1.TabIndex = 13;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Micro";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.MicroRadio.AutoSize = true;
+            this.MicroRadio.Location = new System.Drawing.Point(111, 579);
+            this.MicroRadio.Name = "MicroRadio";
+            this.MicroRadio.Size = new System.Drawing.Size(56, 19);
+            this.MicroRadio.TabIndex = 13;
+            this.MicroRadio.TabStop = true;
+            this.MicroRadio.Text = "Micro";
+            this.MicroRadio.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // PortableRadio
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(111, 604);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(69, 19);
-            this.radioButton2.TabIndex = 14;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Portable";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.PortableRadio.AutoSize = true;
+            this.PortableRadio.Location = new System.Drawing.Point(111, 604);
+            this.PortableRadio.Name = "PortableRadio";
+            this.PortableRadio.Size = new System.Drawing.Size(69, 19);
+            this.PortableRadio.TabIndex = 14;
+            this.PortableRadio.TabStop = true;
+            this.PortableRadio.Text = "Portable";
+            this.PortableRadio.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // StandartRadio
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(111, 628);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(69, 19);
-            this.radioButton3.TabIndex = 15;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Standart";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.StandartRadio.AutoSize = true;
+            this.StandartRadio.Location = new System.Drawing.Point(111, 628);
+            this.StandartRadio.Name = "StandartRadio";
+            this.StandartRadio.Size = new System.Drawing.Size(69, 19);
+            this.StandartRadio.TabIndex = 15;
+            this.StandartRadio.TabStop = true;
+            this.StandartRadio.Text = "Standart";
+            this.StandartRadio.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
@@ -198,17 +215,17 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 23);
             this.dateTimePicker1.TabIndex = 18;
             // 
-            // comboBox3
+            // ComputerType
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.ComputerType.FormattingEnabled = true;
+            this.ComputerType.Items.AddRange(new object[] {
             "ПК",
             "Ноутбук",
             "Сервер"});
-            this.comboBox3.Location = new System.Drawing.Point(114, 44);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 23);
-            this.comboBox3.TabIndex = 22;
+            this.ComputerType.Location = new System.Drawing.Point(114, 44);
+            this.ComputerType.Name = "ComputerType";
+            this.ComputerType.Size = new System.Drawing.Size(121, 23);
+            this.ComputerType.TabIndex = 22;
             // 
             // button2
             // 
@@ -285,32 +302,32 @@
             this.textBox1.Size = new System.Drawing.Size(100, 23);
             this.textBox1.TabIndex = 34;
             // 
-            // radioButton4
+            // ArchitectureX64
             // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(1721, 318);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(43, 19);
-            this.radioButton4.TabIndex = 33;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "x64";
-            this.radioButton4.UseVisualStyleBackColor = true;
+            this.ArchitectureX64.AutoSize = true;
+            this.ArchitectureX64.Location = new System.Drawing.Point(81, 47);
+            this.ArchitectureX64.Name = "ArchitectureX64";
+            this.ArchitectureX64.Size = new System.Drawing.Size(43, 19);
+            this.ArchitectureX64.TabIndex = 33;
+            this.ArchitectureX64.TabStop = true;
+            this.ArchitectureX64.Text = "x64";
+            this.ArchitectureX64.UseVisualStyleBackColor = true;
             // 
-            // radioButton5
+            // ArchitectureX32
             // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(1721, 293);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(43, 19);
-            this.radioButton5.TabIndex = 32;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "x32";
-            this.radioButton5.UseVisualStyleBackColor = true;
+            this.ArchitectureX32.AutoSize = true;
+            this.ArchitectureX32.Location = new System.Drawing.Point(81, 22);
+            this.ArchitectureX32.Name = "ArchitectureX32";
+            this.ArchitectureX32.Size = new System.Drawing.Size(43, 19);
+            this.ArchitectureX32.TabIndex = 32;
+            this.ArchitectureX32.TabStop = true;
+            this.ArchitectureX32.Text = "x32";
+            this.ArchitectureX32.UseVisualStyleBackColor = true;
             // 
-            // comboBox4
+            // ClockChoose
             // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
+            this.ClockChoose.FormattingEnabled = true;
+            this.ClockChoose.Items.AddRange(new object[] {
             "2.2",
             "2.4",
             "2.6",
@@ -321,10 +338,10 @@
             "3.6",
             "3.8",
             "4.0"});
-            this.comboBox4.Location = new System.Drawing.Point(1686, 243);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(121, 23);
-            this.comboBox4.TabIndex = 31;
+            this.ClockChoose.Location = new System.Drawing.Point(1686, 243);
+            this.ClockChoose.Name = "ClockChoose";
+            this.ClockChoose.Size = new System.Drawing.Size(121, 23);
+            this.ClockChoose.TabIndex = 31;
             // 
             // label5
             // 
@@ -335,58 +352,187 @@
             this.label5.TabIndex = 30;
             this.label5.Text = "label5";
             // 
-            // trackBar2
+            // CoresChoose
             // 
-            this.trackBar2.LargeChange = 16;
-            this.trackBar2.Location = new System.Drawing.Point(1686, 192);
-            this.trackBar2.Maximum = 16;
-            this.trackBar2.Minimum = 4;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(121, 45);
-            this.trackBar2.TabIndex = 29;
-            this.trackBar2.Value = 4;
-            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            this.CoresChoose.LargeChange = 16;
+            this.CoresChoose.Location = new System.Drawing.Point(1686, 192);
+            this.CoresChoose.Maximum = 16;
+            this.CoresChoose.Minimum = 4;
+            this.CoresChoose.Name = "CoresChoose";
+            this.CoresChoose.Size = new System.Drawing.Size(121, 45);
+            this.CoresChoose.TabIndex = 29;
+            this.CoresChoose.Value = 4;
+            this.CoresChoose.Scroll += new System.EventHandler(this.trackBar2_Scroll);
             // 
-            // comboBox5
+            // SeriesChoose
             // 
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Items.AddRange(new object[] {
+            this.SeriesChoose.FormattingEnabled = true;
+            this.SeriesChoose.Items.AddRange(new object[] {
             "5",
             "7",
             "9",
             "Server"});
-            this.comboBox5.Location = new System.Drawing.Point(1686, 122);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(121, 23);
-            this.comboBox5.TabIndex = 28;
+            this.SeriesChoose.Location = new System.Drawing.Point(1686, 122);
+            this.SeriesChoose.Name = "SeriesChoose";
+            this.SeriesChoose.Size = new System.Drawing.Size(121, 23);
+            this.SeriesChoose.TabIndex = 28;
             // 
-            // radioButton6
+            // CreatorAMD
             // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(1721, 75);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(52, 19);
-            this.radioButton6.TabIndex = 27;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "AMD";
-            this.radioButton6.UseVisualStyleBackColor = true;
+            this.CreatorAMD.AutoSize = true;
+            this.CreatorAMD.Location = new System.Drawing.Point(17, 62);
+            this.CreatorAMD.Name = "CreatorAMD";
+            this.CreatorAMD.Size = new System.Drawing.Size(52, 19);
+            this.CreatorAMD.TabIndex = 27;
+            this.CreatorAMD.TabStop = true;
+            this.CreatorAMD.Text = "AMD";
+            this.CreatorAMD.UseVisualStyleBackColor = true;
             // 
-            // radioButton7
+            // CreatorIntel
             // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(1721, 50);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(48, 19);
-            this.radioButton7.TabIndex = 26;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "Intel";
-            this.radioButton7.UseVisualStyleBackColor = true;
+            this.CreatorIntel.AutoSize = true;
+            this.CreatorIntel.Location = new System.Drawing.Point(17, 37);
+            this.CreatorIntel.Name = "CreatorIntel";
+            this.CreatorIntel.Size = new System.Drawing.Size(48, 19);
+            this.CreatorIntel.TabIndex = 26;
+            this.CreatorIntel.TabStop = true;
+            this.CreatorIntel.Text = "Intel";
+            this.CreatorIntel.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.CreatorAMD);
+            this.groupBox1.Controls.Add(this.CreatorIntel);
+            this.groupBox1.Location = new System.Drawing.Point(1700, 10);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(86, 102);
+            this.groupBox1.TabIndex = 41;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "groupBox1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.ArchitectureX32);
+            this.groupBox2.Controls.Add(this.ArchitectureX64);
+            this.groupBox2.Location = new System.Drawing.Point(1634, 282);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(200, 69);
+            this.groupBox2.TabIndex = 42;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // NvidiaGPU
+            // 
+            this.NvidiaGPU.AutoSize = true;
+            this.NvidiaGPU.Location = new System.Drawing.Point(60, 22);
+            this.NvidiaGPU.Name = "NvidiaGPU";
+            this.NvidiaGPU.Size = new System.Drawing.Size(59, 19);
+            this.NvidiaGPU.TabIndex = 43;
+            this.NvidiaGPU.TabStop = true;
+            this.NvidiaGPU.Text = "Nvidia";
+            this.NvidiaGPU.UseVisualStyleBackColor = true;
+            // 
+            // AmdGPU
+            // 
+            this.AmdGPU.AutoSize = true;
+            this.AmdGPU.Location = new System.Drawing.Point(63, 62);
+            this.AmdGPU.Name = "AmdGPU";
+            this.AmdGPU.Size = new System.Drawing.Size(51, 19);
+            this.AmdGPU.TabIndex = 44;
+            this.AmdGPU.TabStop = true;
+            this.AmdGPU.Text = "Amd";
+            this.AmdGPU.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.NvidiaGPU);
+            this.groupBox3.Controls.Add(this.AmdGPU);
+            this.groupBox3.Location = new System.Drawing.Point(1221, 44);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(200, 100);
+            this.groupBox3.TabIndex = 45;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // GPUSeries
+            // 
+            this.GPUSeries.FormattingEnabled = true;
+            this.GPUSeries.Items.AddRange(new object[] {
+            "RTX",
+            "Radeon"});
+            this.GPUSeries.Location = new System.Drawing.Point(1214, 162);
+            this.GPUSeries.Name = "GPUSeries";
+            this.GPUSeries.Size = new System.Drawing.Size(121, 23);
+            this.GPUSeries.TabIndex = 46;
+            // 
+            // GpuClock
+            // 
+            this.GpuClock.LargeChange = 100;
+            this.GpuClock.Location = new System.Drawing.Point(1221, 303);
+            this.GpuClock.Maximum = 2000;
+            this.GpuClock.Minimum = 1000;
+            this.GpuClock.Name = "GpuClock";
+            this.GpuClock.Size = new System.Drawing.Size(104, 45);
+            this.GpuClock.SmallChange = 100;
+            this.GpuClock.TabIndex = 47;
+            this.GpuClock.Value = 1000;
+            // 
+            // DiretXYes
+            // 
+            this.DiretXYes.AutoSize = true;
+            this.DiretXYes.Location = new System.Drawing.Point(6, 15);
+            this.DiretXYes.Name = "DiretXYes";
+            this.DiretXYes.Size = new System.Drawing.Size(94, 19);
+            this.DiretXYes.TabIndex = 48;
+            this.DiretXYes.TabStop = true;
+            this.DiretXYes.Text = "radioButton6";
+            this.DiretXYes.UseVisualStyleBackColor = true;
+            // 
+            // DiretXNo
+            // 
+            this.DiretXNo.AutoSize = true;
+            this.DiretXNo.Location = new System.Drawing.Point(5, 48);
+            this.DiretXNo.Name = "DiretXNo";
+            this.DiretXNo.Size = new System.Drawing.Size(94, 19);
+            this.DiretXNo.TabIndex = 49;
+            this.DiretXNo.TabStop = true;
+            this.DiretXNo.Text = "radioButton7";
+            this.DiretXNo.UseVisualStyleBackColor = true;
+            // 
+            // GpuRAM
+            // 
+            this.GpuRAM.Location = new System.Drawing.Point(1230, 430);
+            this.GpuRAM.Maximum = 24;
+            this.GpuRAM.Minimum = 8;
+            this.GpuRAM.Name = "GpuRAM";
+            this.GpuRAM.Size = new System.Drawing.Size(104, 45);
+            this.GpuRAM.SmallChange = 2;
+            this.GpuRAM.TabIndex = 50;
+            this.GpuRAM.Value = 8;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.DiretXYes);
+            this.groupBox4.Controls.Add(this.DiretXNo);
+            this.groupBox4.Location = new System.Drawing.Point(1221, 347);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(127, 74);
+            this.groupBox4.TabIndex = 51;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "groupBox4";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2030, 937);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.GpuRAM);
+            this.Controls.Add(this.GpuClock);
+            this.Controls.Add(this.GPUSeries);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -394,33 +540,39 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.radioButton4);
-            this.Controls.Add(this.radioButton5);
-            this.Controls.Add(this.comboBox4);
+            this.Controls.Add(this.ClockChoose);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.trackBar2);
-            this.Controls.Add(this.comboBox5);
-            this.Controls.Add(this.radioButton6);
-            this.Controls.Add(this.radioButton7);
+            this.Controls.Add(this.CoresChoose);
+            this.Controls.Add(this.SeriesChoose);
             this.Controls.Add(this.richTextBox2);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.comboBox3);
+            this.Controls.Add(this.ComputerType);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.checkBox2);
             this.Controls.Add(this.checkBox1);
-            this.Controls.Add(this.radioButton3);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.radioButton1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.trackBar1);
+            this.Controls.Add(this.StandartRadio);
+            this.Controls.Add(this.PortableRadio);
+            this.Controls.Add(this.MicroRadio);
+            this.Controls.Add(this.GPUModel);
+            this.Controls.Add(this.RamAmount);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form2";
             this.Text = "Form2";
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.RamAmount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CoresChoose)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.GpuClock)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.GpuRAM)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,7 +592,7 @@
         private CheckBox checkBox1;
         private CheckBox checkBox2;
         private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox3;
+        private ComboBox ComputerType;
         private Button button2;
         private RichTextBox richTextBox2;
         private Label label4;
@@ -454,9 +606,28 @@
         private RadioButton radioButton5;
         private ComboBox comboBox4;
         private Label label5;
-        private TrackBar trackBar2;
-        private ComboBox comboBox5;
-        private RadioButton radioButton6;
-        private RadioButton radioButton7;
+        private TrackBar CoresChoose;
+        private ComboBox SeriesChoose;
+        private RadioButton CreatorAMD;
+        private RadioButton CreatorIntel;
+        private ComboBox ClockChoose;
+        private RadioButton ArchitectureX64;
+        private RadioButton ArchitectureX32;
+        private TrackBar RamAmount;
+        private ComboBox GPUModel;
+        private RadioButton MicroRadio;
+        private RadioButton PortableRadio;
+        private RadioButton StandartRadio;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private RadioButton NvidiaGPU;
+        private RadioButton AmdGPU;
+        private GroupBox groupBox3;
+        private ComboBox GPUSeries;
+        private TrackBar GpuClock;
+        private RadioButton DiretXYes;
+        private RadioButton DiretXNo;
+        private TrackBar GpuRAM;
+        private GroupBox groupBox4;
     }
 }
