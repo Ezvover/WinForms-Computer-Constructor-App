@@ -14,6 +14,9 @@ using System.Xml.Serialization;
 
 namespace laba2
 {
+    /// <summary>
+    /// TODO #!: Add try-catch for each block + refresh form1, while closing form2
+    /// </summary>
     public partial class Form2 : Form
     {
         Computer computer;
@@ -70,6 +73,8 @@ namespace laba2
             RamAmount.Scroll+= trackBar1_Scroll;
         }
 
+        int amount = 0;
+
         private void trackBar1_Scroll(object sender, EventArgs e)
         {
             label1.Text = String.Format($"Необходимое ОЗУ: {RamAmount.Value} ГБ");
@@ -77,27 +82,46 @@ namespace laba2
 
         private void trackBar2_Scroll(object sender, EventArgs e)
         {
-            label5.Text = String.Format($"Количество ядер: {CoresChoose.Value}");
+            CoresLabel.Text = String.Format($"Количество ядер: {CoresChoose.Value}");
 
+        }
+
+        private void GpuClock_Scroll(object sender, EventArgs e)
+        {
+            ClockGpuLabel.Text = String.Format($"Частота ГК: {GpuClock.Value}");
+        }
+
+        private void GpuRamGr_Click(object sender, EventArgs e)
+        {
+            GpuRamGr.Text = String.Format($"Кол-во памяти: {GpuRAM.Value} ГБ");
         }
 
         public void ToClass()
         {
-            // type radiobutton
-            computer.Type = ComputerType.Text;
+            if (ComputerType.SelectedIndex == -1)
+            {
+                MessageBox.Show("Вы не выбрали тип устройства");
+            }
+            else
+            {
+                computer.Type = ComputerType.Text;
+                amount++;
+            }
 
             if (CreatorIntel.Checked)
             {
                 computer.cpu.Creator = CreatorIntel.Text;
+                amount++;
             }
             else if (CreatorAMD.Checked)
             {
                 computer.cpu.Creator = CreatorAMD.Text;
+                amount++;
             }
 
             computer.cpu.Series = SeriesChoose.Text;
 
-            computer.cpu.Model = comboBox1.Text;
+            computer.cpu.Model = ModelCombobox.Text;
 
             computer.cpu.Cores = CoresChoose.Value;
 
@@ -179,7 +203,7 @@ namespace laba2
             computer.gpu.GPURAM = GpuRAM.Value;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void SaveButton_Click(object sender, EventArgs e)
         {
             ToClass();
             string str = $"Тип: {computer.Type} \nРазмер: {computer.Size} \nДиск: {computer.Drive} \nПроизводитель ЦП: {computer.cpu.Creator} \nМодель ЦП: {computer.cpu.Model} \nКол-во ядер ЦП: {computer.cpu.Cores} \nЧастота ЦП: {computer.cpu.Clock} \nАрхитектура ЦП: {computer.cpu.Architecture} \nL1, L2, L3 кэш: {computer.cpu.L1Cache}, {computer.cpu.L2Cache}, {computer.cpu.L3Cache} \nПроиводитель ГК: {computer.gpu.Creator} \nСерия ГК: {computer.gpu.Series} \nМодель ГК: {computer.gpu.Model} \nЧастота ГК: {computer.gpu.Clock} \nНаличие DiretX: {computer.gpu.DiretX} \nКоличество видеопамяти: {computer.gpu.GPURAM}"; 
@@ -194,6 +218,12 @@ namespace laba2
                     xmlSerializer.Serialize(stream, computer);
                 }
             }
+        }
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            Form1 form1 = new Form1();
+            form1.Refresh();
         }
 
         public struct Computer
@@ -237,7 +267,6 @@ namespace laba2
 
         }
 
-    }
 
-   
+    }
 }

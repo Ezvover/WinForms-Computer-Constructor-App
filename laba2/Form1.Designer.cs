@@ -29,63 +29,77 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.CreatePC = new System.Windows.Forms.Button();
+            this.OutputTextbox = new System.Windows.Forms.RichTextBox();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.LoadButton = new System.Windows.Forms.Button();
+            this.ClearButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // CreatePC
             // 
-            this.button1.Location = new System.Drawing.Point(813, 685);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CreatePC.Location = new System.Drawing.Point(533, 141);
+            this.CreatePC.Name = "CreatePC";
+            this.CreatePC.Size = new System.Drawing.Size(272, 168);
+            this.CreatePC.TabIndex = 1;
+            this.CreatePC.Text = "Создать ПК";
+            this.CreatePC.UseVisualStyleBackColor = true;
+            this.CreatePC.Click += new System.EventHandler(this.button1_Click);
             // 
-            // richTextBox1
+            // OutputTextbox
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(694, 157);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(310, 373);
-            this.richTextBox1.TabIndex = 5;
-            this.richTextBox1.Text = "";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(826, 595);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.OutputTextbox.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.OutputTextbox.Location = new System.Drawing.Point(28, 12);
+            this.OutputTextbox.Name = "OutputTextbox";
+            this.OutputTextbox.Size = new System.Drawing.Size(466, 806);
+            this.OutputTextbox.TabIndex = 5;
+            this.OutputTextbox.Text = "";
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // LoadButton
+            // 
+            this.LoadButton.Location = new System.Drawing.Point(533, 362);
+            this.LoadButton.Name = "LoadButton";
+            this.LoadButton.Size = new System.Drawing.Size(272, 164);
+            this.LoadButton.TabIndex = 8;
+            this.LoadButton.Text = "Загрузить ПК";
+            this.LoadButton.UseVisualStyleBackColor = true;
+            this.LoadButton.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ClearButton
+            // 
+            this.ClearButton.Location = new System.Drawing.Point(533, 572);
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(272, 168);
+            this.ClearButton.TabIndex = 9;
+            this.ClearButton.Text = "Очистить форму";
+            this.ClearButton.UseVisualStyleBackColor = true;
+            this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1749, 844);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.richTextBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(907, 844);
+            this.Controls.Add(this.ClearButton);
+            this.Controls.Add(this.LoadButton);
+            this.Controls.Add(this.OutputTextbox);
+            this.Controls.Add(this.CreatePC);
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private Button button1;
-        private RichTextBox richTextBox1;
-        private Label label1;
+        private Button CreatePC;
+        private RichTextBox OutputTextbox;
         private ContextMenuStrip contextMenuStrip1;
+        private Button LoadButton;
+        private Button ClearButton;
     }
 }
