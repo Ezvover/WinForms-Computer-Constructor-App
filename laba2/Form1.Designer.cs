@@ -34,13 +34,15 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.LoadButton = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.SearchButton = new System.Windows.Forms.Button();
+            this.SearchText = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // CreatePC
             // 
-            this.CreatePC.Location = new System.Drawing.Point(533, 141);
+            this.CreatePC.Location = new System.Drawing.Point(530, 31);
             this.CreatePC.Name = "CreatePC";
-            this.CreatePC.Size = new System.Drawing.Size(272, 168);
+            this.CreatePC.Size = new System.Drawing.Size(208, 133);
             this.CreatePC.TabIndex = 1;
             this.CreatePC.Text = "Создать ПК";
             this.CreatePC.UseVisualStyleBackColor = true;
@@ -62,9 +64,9 @@
             // 
             // LoadButton
             // 
-            this.LoadButton.Location = new System.Drawing.Point(533, 362);
+            this.LoadButton.Location = new System.Drawing.Point(530, 191);
             this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(272, 164);
+            this.LoadButton.Size = new System.Drawing.Size(208, 124);
             this.LoadButton.TabIndex = 8;
             this.LoadButton.Text = "Загрузить ПК";
             this.LoadButton.UseVisualStyleBackColor = true;
@@ -72,19 +74,38 @@
             // 
             // ClearButton
             // 
-            this.ClearButton.Location = new System.Drawing.Point(533, 572);
+            this.ClearButton.Location = new System.Drawing.Point(530, 348);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(272, 168);
+            this.ClearButton.Size = new System.Drawing.Size(208, 137);
             this.ClearButton.TabIndex = 9;
             this.ClearButton.Text = "Очистить форму";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
             // 
+            // SearchButton
+            // 
+            this.SearchButton.Location = new System.Drawing.Point(579, 667);
+            this.SearchButton.Name = "SearchButton";
+            this.SearchButton.Size = new System.Drawing.Size(143, 72);
+            this.SearchButton.TabIndex = 11;
+            this.SearchButton.Text = "button1";
+            this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
+            // 
+            // SearchText
+            // 
+            this.SearchText.Location = new System.Drawing.Point(555, 614);
+            this.SearchText.Name = "SearchText";
+            this.SearchText.Size = new System.Drawing.Size(183, 23);
+            this.SearchText.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(907, 844);
+            this.ClientSize = new System.Drawing.Size(1199, 844);
+            this.Controls.Add(this.SearchText);
+            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.LoadButton);
             this.Controls.Add(this.OutputTextbox);
@@ -92,6 +113,7 @@
             this.Name = "Form1";
             this.Text = "Form1";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,5 +123,7 @@
         private ContextMenuStrip contextMenuStrip1;
         private Button LoadButton;
         private Button ClearButton;
+        private Button SearchButton;
+        private TextBox SearchText;
     }
 }
