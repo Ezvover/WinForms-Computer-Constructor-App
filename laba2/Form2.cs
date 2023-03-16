@@ -174,15 +174,19 @@ namespace laba2
 
             try
             {
-                if (computer.cpu.L1Cache < 0 && computer.cpu.L2Cache < 0 && computer.cpu.L3Cache < 0)
+
+                int temp1 = int.Parse(textBox1.Text);
+                int temp2 = int.Parse(textBox2.Text);
+                int temp3 = int.Parse(textBox3.Text);
+                if (temp1 < 0 || temp2 < 0 || temp3 < 0)
                 {
                     MessageBox.Show("Число меньше нуля");
                 }
                 else
                 {
-                    computer.cpu.L1Cache = int.Parse(textBox1.Text);
-                    computer.cpu.L2Cache = int.Parse(textBox2.Text);
-                    computer.cpu.L3Cache = int.Parse(textBox3.Text);
+                    computer.cpu.L1Cache = temp1;
+                    computer.cpu.L2Cache = temp2;
+                    computer.cpu.L3Cache = temp3;
                     amount++;
                 }
             }
@@ -251,7 +255,7 @@ namespace laba2
         private void SaveButton_Click(object sender, EventArgs e)
         {
             ToClass();
-            if (amount >= 13)
+            if (amount >= 13 && (computer.cpu.L1Cache > 0 && computer.cpu.L2Cache > 0 && computer.cpu.L3Cache > 0))
             {
                 amountClick++;
                 string str = $"Тип: {computer.info.Type} \nРазмер: {computer.info.Size} \nДиск: {computer.info.Drive} \nОП: {computer.info.RAM} \nПроизводитель ЦП: {computer.cpu.Creator} \nМодель ЦП: {computer.cpu.Model} \nКол-во ядер ЦП: {computer.cpu.Cores} \nЧастота ЦП: {computer.cpu.Clock} \nАрхитектура ЦП: {computer.cpu.Architecture} \nL1, L2, L3 кэш: {computer.cpu.L1Cache}, {computer.cpu.L2Cache}, {computer.cpu.L3Cache} \nПроиводитель ГК: {computer.gpu.Creator} \nСерия ГК: {computer.gpu.Series} \nМодель ГК: {computer.gpu.Model} \nЧастота ГК: {computer.gpu.Clock} \nНаличие DiretX: {computer.gpu.DiretX} \nКоличество видеопамяти: {computer.gpu.GPURAM}";
@@ -264,7 +268,7 @@ namespace laba2
             }
             else
             {
-                MessageBox.Show("Вы выбрали не все поля");
+                
             }
             
         }
