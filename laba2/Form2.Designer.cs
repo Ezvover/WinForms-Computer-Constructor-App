@@ -623,7 +623,7 @@
             // 
             this.ClockGpuLabel.AutoSize = true;
             this.ClockGpuLabel.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ClockGpuLabel.Location = new System.Drawing.Point(674, 541);
+            this.ClockGpuLabel.Location = new System.Drawing.Point(671, 533);
             this.ClockGpuLabel.Name = "ClockGpuLabel";
             this.ClockGpuLabel.Size = new System.Drawing.Size(125, 30);
             this.ClockGpuLabel.TabIndex = 63;
@@ -638,7 +638,6 @@
             this.GpuRamGr.Size = new System.Drawing.Size(197, 30);
             this.GpuRamGr.TabIndex = 64;
             this.GpuRamGr.Text = "Кол-во памяти ГК:";
-            this.GpuRamGr.Click += new System.EventHandler(this.GpuRamGr_Click);
             // 
             // CloseButton
             // 
