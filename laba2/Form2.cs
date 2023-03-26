@@ -30,7 +30,7 @@ namespace laba2
 
         public void GetAmoutFiles()
         {
-            string directoryPath = @"C:\Users\vovas\Desktop\repos\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
+            string directoryPath = @"C:\Users\Vover\Desktop\task\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
             string searchPattern = "computer*";
             amountClick = Directory.GetFiles(directoryPath, searchPattern).Count();
         }
@@ -266,11 +266,6 @@ namespace laba2
                     xmlSerializer.Serialize(stream, computer);
                 }
             }
-            else
-            {
-                
-            }
-            
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
