@@ -35,19 +35,18 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.AboutButton = new System.Windows.Forms.ToolStripButton();
             this.CreateComputer = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.OutputPc = new System.Windows.Forms.ToolStripButton();
+            this.SortRam = new System.Windows.Forms.ToolStripButton();
+            this.SortClock = new System.Windows.Forms.ToolStripButton();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.ClearButton = new System.Windows.Forms.ToolStripButton();
+            this.PredLabel = new System.Windows.Forms.ToolStripLabel();
+            this.amountLabel = new System.Windows.Forms.ToolStripLabel();
+            this.dataLabel = new System.Windows.Forms.ToolStripLabel();
+            this.HideButton = new System.Windows.Forms.ToolStripButton();
+            this.DateTimer = new System.Windows.Forms.Timer(this.components);
+            this.ShowToolBar = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,19 +69,19 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AboutButton,
             this.CreateComputer,
-            this.toolStripButton3,
-            this.toolStripButton4,
-            this.toolStripButton5,
+            this.OutputPc,
+            this.SortRam,
+            this.SortClock,
             this.toolStripTextBox1,
             this.toolStripButton6,
-            this.toolStripButton7,
-            this.toolStripLabel1,
-            this.toolStripLabel2,
-            this.toolStripLabel3,
-            this.toolStripButton8});
+            this.ClearButton,
+            this.PredLabel,
+            this.amountLabel,
+            this.dataLabel,
+            this.HideButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1199, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(639, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -93,7 +92,7 @@
             this.AboutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.AboutButton.Name = "AboutButton";
             this.AboutButton.Size = new System.Drawing.Size(23, 22);
-            this.AboutButton.Text = "toolStripButton1";
+            this.AboutButton.Text = "Об программе";
             this.AboutButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // CreateComputer
@@ -103,38 +102,38 @@
             this.CreateComputer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CreateComputer.Name = "CreateComputer";
             this.CreateComputer.Size = new System.Drawing.Size(23, 22);
-            this.CreateComputer.Text = "toolStripButton2";
+            this.CreateComputer.Text = "Создать устройство";
             this.CreateComputer.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // toolStripButton3
+            // OutputPc
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
-            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            this.OutputPc.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.OutputPc.Image = ((System.Drawing.Image)(resources.GetObject("OutputPc.Image")));
+            this.OutputPc.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OutputPc.Name = "OutputPc";
+            this.OutputPc.Size = new System.Drawing.Size(23, 22);
+            this.OutputPc.Text = "Вывод устройства";
+            this.OutputPc.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
-            // toolStripButton4
+            // SortRam
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.SortRam.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SortRam.Image = ((System.Drawing.Image)(resources.GetObject("SortRam.Image")));
+            this.SortRam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SortRam.Name = "SortRam";
+            this.SortRam.Size = new System.Drawing.Size(23, 22);
+            this.SortRam.Text = "Сортировка по ОЗУ";
+            this.SortRam.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
-            // toolStripButton5
+            // SortClock
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "toolStripButton5";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.SortClock.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SortClock.Image = ((System.Drawing.Image)(resources.GetObject("SortClock.Image")));
+            this.SortClock.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SortClock.Name = "SortClock";
+            this.SortClock.Size = new System.Drawing.Size(23, 22);
+            this.SortClock.Text = "Сортировка по частоте";
+            this.SortClock.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // toolStripTextBox1
             // 
@@ -151,73 +150,66 @@
             this.toolStripButton6.Text = "toolStripButton6";
             this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
             // 
-            // toolStripButton7
+            // ClearButton
             // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton7.Text = "toolStripButton7";
-            this.toolStripButton7.Click += new System.EventHandler(this.toolStripButton7_Click);
+            this.ClearButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.ClearButton.Image = ((System.Drawing.Image)(resources.GetObject("ClearButton.Image")));
+            this.ClearButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.ClearButton.Name = "ClearButton";
+            this.ClearButton.Size = new System.Drawing.Size(23, 22);
+            this.ClearButton.Text = "Очистка формы";
+            this.ClearButton.Click += new System.EventHandler(this.toolStripButton7_Click);
             // 
-            // toolStripLabel1
+            // PredLabel
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(86, 22);
-            this.toolStripLabel1.Text = "toolStripLabel1";
+            this.PredLabel.Name = "PredLabel";
+            this.PredLabel.Size = new System.Drawing.Size(131, 22);
+            this.PredLabel.Text = "Предыдущее действие";
             // 
-            // toolStripLabel2
+            // amountLabel
             // 
-            this.toolStripLabel2.Name = "toolStripLabel2";
-            this.toolStripLabel2.Size = new System.Drawing.Size(86, 22);
-            this.toolStripLabel2.Text = "toolStripLabel2";
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(100, 22);
+            this.amountLabel.Text = "Кол-во объектов";
             // 
-            // toolStripLabel3
+            // dataLabel
             // 
-            this.toolStripLabel3.Name = "toolStripLabel3";
-            this.toolStripLabel3.Size = new System.Drawing.Size(86, 22);
-            this.toolStripLabel3.Text = "toolStripLabel3";
+            this.dataLabel.Name = "dataLabel";
+            this.dataLabel.Size = new System.Drawing.Size(32, 22);
+            this.dataLabel.Text = "Дата";
             // 
-            // toolStripButton8
+            // HideButton
             // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton8.Image")));
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton8.Text = "toolStripButton8";
-            this.toolStripButton8.Click += new System.EventHandler(this.toolStripButton8_Click);
+            this.HideButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.HideButton.Image = ((System.Drawing.Image)(resources.GetObject("HideButton.Image")));
+            this.HideButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.HideButton.Name = "HideButton";
+            this.HideButton.Size = new System.Drawing.Size(23, 22);
+            this.HideButton.Text = "Спрятать меню";
+            this.HideButton.Click += new System.EventHandler(this.HideButton_Click);
             // 
-            // textBox1
+            // DateTimer
             // 
-            this.textBox1.Location = new System.Drawing.Point(819, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(205, 23);
-            this.textBox1.TabIndex = 16;
+            this.DateTimer.Interval = 1000;
+            this.DateTimer.Tick += new System.EventHandler(this.DateTimer_Tick);
             // 
-            // textBox2
+            // ShowToolBar
             // 
-            this.textBox2.Location = new System.Drawing.Point(819, 192);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 23);
-            this.textBox2.TabIndex = 17;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(819, 241);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(205, 23);
-            this.textBox3.TabIndex = 18;
+            this.ShowToolBar.Location = new System.Drawing.Point(188, 12);
+            this.ShowToolBar.Name = "ShowToolBar";
+            this.ShowToolBar.Size = new System.Drawing.Size(259, 43);
+            this.ShowToolBar.TabIndex = 16;
+            this.ShowToolBar.Text = "Показать меню";
+            this.ShowToolBar.UseVisualStyleBackColor = true;
+            this.ShowToolBar.Visible = false;
+            this.ShowToolBar.Click += new System.EventHandler(this.ShowToolBar_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1199, 844);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.ClientSize = new System.Drawing.Size(639, 844);
+            this.Controls.Add(this.ShowToolBar);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.OutputTextbox);
             this.Name = "Form1";
@@ -235,18 +227,17 @@
         private ToolStrip toolStrip1;
         private ToolStripButton AboutButton;
         private ToolStripButton CreateComputer;
-        private ToolStripButton toolStripButton3;
-        private ToolStripButton toolStripButton4;
-        private ToolStripButton toolStripButton5;
+        private ToolStripButton OutputPc;
+        private ToolStripButton SortRam;
+        private ToolStripButton SortClock;
         private ToolStripTextBox toolStripTextBox1;
         private ToolStripButton toolStripButton6;
-        private ToolStripButton toolStripButton7;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private ToolStripLabel toolStripLabel1;
-        private ToolStripLabel toolStripLabel2;
-        private ToolStripLabel toolStripLabel3;
-        private ToolStripButton toolStripButton8;
+        private ToolStripButton ClearButton;
+        private ToolStripLabel PredLabel;
+        private ToolStripLabel amountLabel;
+        private ToolStripLabel dataLabel;
+        private System.Windows.Forms.Timer DateTimer;
+        private ToolStripButton HideButton;
+        private Button ShowToolBar;
     }
 }

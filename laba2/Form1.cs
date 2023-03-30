@@ -13,13 +13,12 @@ namespace laba2
     public partial class Form1 : Form
     {
         int count = 0;
-        List<string> list = new List<string>();
         public Form1()
         {
             InitializeComponent();
-            toolStripLabel3.Text = DateTime.Now.ToString();
             Deserialization();
-            toolStripLabel2.Text = $"Кол-во объектов: {computerList.Count}";
+            DateTimer.Start();
+            toolStrip1.Dock = DockStyle.Top;
         }
 
         List<Computer> computerList = new List<Computer>();
@@ -43,7 +42,7 @@ namespace laba2
         public void Deserialization()
         {
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Computer));
-            string directoryPath = @"C:\Users\Vover\Desktop\task\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
+            string directoryPath = @"C:\Users\vovas\Desktop\repos\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
             string searchPattern = "computer*";
             count = Directory.GetFiles(directoryPath, searchPattern).Count();
             for (int i = 1; i <= count; i++)
@@ -65,15 +64,13 @@ namespace laba2
 
         private void toolStripButton1_Click(object sender, EventArgs e) // aboutButton
         {
-            toolStripLabel1.Text = $"Вы узнали кто сделал программу";
-            list.Add(toolStripLabel1.Text);
-            MessageBox.Show("Прогу сделал Володя Тараскин \n Версия: 1.0");
+            PredLabel.Text = $"Вы узнали кто сделал программу";
+            MessageBox.Show("Тараскин Владимир Михайлович\nВерсия 1.0\nг. Минск, 2023");
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e) // CreateComputer
         {
-            toolStripLabel1.Text = $"Вы создали новый компьютер";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы создали новый компьютер";
 
             Form2 form2 = new Form2();
             form2.ShowDialog();
@@ -81,8 +78,7 @@ namespace laba2
 
         private void toolStripButton3_Click(object sender, EventArgs e) //OutputComputer
         {
-            toolStripLabel1.Text = $"Вы вывели на экран список созданных ПК";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы вывели на экран список созданных ПК";
 
             this.Refresh();
             OutputTextbox.Clear();
@@ -92,8 +88,7 @@ namespace laba2
 
         private void toolStripButton4_Click(object sender, EventArgs e) //SortRAM
         {
-            toolStripLabel1.Text = $"Вы выполнили сортировку по ОЗУ";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы выполнили сортировку по ОЗУ";
 
             Deserialization();
             var computerSort = from c in computerList
@@ -110,7 +105,7 @@ namespace laba2
             }
 
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Computer));
-            using (FileStream stream = new FileStream($"sortedComputer.xml", FileMode.OpenOrCreate))
+            using (FileStream stream = new FileStream($"sortedComputerRAM.xml", FileMode.OpenOrCreate))
             {
                 foreach (var c in computerSort)
                 {
@@ -121,8 +116,7 @@ namespace laba2
 
         private void toolStripButton5_Click(object sender, EventArgs e) // SortClock
         {
-            toolStripLabel1.Text = $"Вы выполнили сортировку по частоте";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы выполнили сортировку по частоте";
 
             Deserialization();
             var computerSort2 = from c in computerList
@@ -150,8 +144,7 @@ namespace laba2
 
         private void toolStripButton6_Click(object sender, EventArgs e) // SearchDrive
         {
-            toolStripLabel1.Text = $"Вы выполнили поиск по диску";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы выполнили поиск по диску";
 
             Deserialization();
             string str = "";
@@ -178,23 +171,33 @@ namespace laba2
 
         private void toolStripButton7_Click(object sender, EventArgs e) //ClearButton
         {
-            toolStripLabel1.Text = $"Вы выполнили  формы";
-            list.Add(toolStripLabel1.Text);
+            PredLabel.Text = $"Вы выполнили очистку формы";
 
             OutputTextbox.Clear();
         }
 
-        private void toolStripButton8_Click(object sender, EventArgs e) // ButtonInfo
+        private void DateTimer_Tick(object sender, EventArgs e)
         {
-            if (list[list.Count-1].Equals("Вы выполнили  формы"))
-            {
-                OutputTextbox.Clear();
-            }
+            dataLabel.Text = DateTime.Now.ToString();
+            amountLabel.Text = $"Кол-во объектов: {computerList.Count}";
+        }
+
+        private void HideButton_Click(object sender, EventArgs e)
+        {
+            toolStrip1.Visible = false;
+            ShowToolBar.Visible = true;
+        }
+
+        private void ShowToolBar_Click(object sender, EventArgs e)
+        {
+            ShowToolBar.Visible = false;
+            toolStrip1.Visible = true;
+            toolStrip1.Dock = DockStyle.Top;
         }
     }
 
     [Serializable]
-    public class Computer
+    public class Computer : ValidationAttribute
     {
         public Computer()
         {
@@ -229,6 +232,17 @@ namespace laba2
         public CPU cpu;
         public GPU gpu;
         public Info info;
+
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            Computer computer = (Computer)value;
+            if (computer.cpu.Architecture != "x32" && computer.cpu.Architecture != "x64")
+            {
+                return new ValidationResult(ErrorMessage ?? "Неправильная архитектура ЦП.");
+            }
+
+            return ValidationResult.Success;
+        }
     }
 
     [Serializable]
@@ -252,11 +266,11 @@ namespace laba2
         public int Cores { get; set; }
         public string Clock { get; set; }
         public string Architecture { get; set; }
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
         public int L1Cache { get; set; }
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
         public int L2Cache { get; set; }
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
         public int L3Cache { get; set; }
     }
 

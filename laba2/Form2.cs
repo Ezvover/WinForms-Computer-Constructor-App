@@ -30,7 +30,7 @@ namespace laba2
 
         public void GetAmoutFiles()
         {
-            string directoryPath = @"C:\Users\Vover\Desktop\task\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
+            string directoryPath = @"C:\Users\vovas\Desktop\repos\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
             string searchPattern = "computer*";
             amountClick = Directory.GetFiles(directoryPath, searchPattern).Count();
         }
@@ -52,7 +52,46 @@ namespace laba2
             ClockGpuLabel.Text = String.Format($"Частота ГК: {GpuClock.Value}");
         }
 
+        private bool ValidateCPU()
+        {
+            if (string.IsNullOrEmpty(computer.cpu.Creator))
+            {
+                MessageBox.Show("Вы не выбрали производителя ЦП");
+                return false;
+            }
 
+            if (string.IsNullOrEmpty(computer.cpu.Series))
+            {
+                MessageBox.Show("Вы не выбрали серию ЦП");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(computer.cpu.Model))
+            {
+                MessageBox.Show("Вы не выбрали модель ЦП");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(computer.cpu.Clock))
+            {
+                MessageBox.Show("Вы не выбрали частоту ЦП");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(computer.cpu.Architecture))
+            {
+                MessageBox.Show("Вы не выбрали архитектуру ЦП");
+                return false;
+            }
+
+            if (computer.cpu.L1Cache <= 0 || computer.cpu.L2Cache <= 0 || computer.cpu.L3Cache <= 0)
+            {
+                MessageBox.Show("Кэш ЦП должен быть больше 0");
+                return false;
+            }
+
+            return true;
+        }
 
         public void ToClass()
         {
@@ -120,42 +159,17 @@ namespace laba2
                 computer.cpu.Creator = CreatorAMD.Text;
                 amount++;
             }
-            else if (CreatorAMD.Checked == false && CreatorIntel.Checked == false)
-            {
-                MessageBox.Show("Вы не выбрали производителя ЦП");
-            }
 
-            if (SeriesChoose.SelectedIndex == -1 )
-            {
-                MessageBox.Show("Вы не выбрали серию ЦП");
-            }
-            else
-            {
-                computer.cpu.Series = SeriesChoose.Text;
-                amount++;
-            }
+            computer.cpu.Series = SeriesChoose.Text;
+            amount++;
 
-            if (ModelCombobox.SelectedIndex == -1)
-            {
-                MessageBox.Show("Вы не выбрали серию ЦП");
-            }
-            else
-            {
-                computer.cpu.Model = ModelCombobox.Text;
-                amount++;
-            }
+            computer.cpu.Model = ModelCombobox.Text;
+            amount++;
 
             computer.cpu.Cores = CoresChoose.Value;
 
-            if (ClockChoose.SelectedIndex == -1)
-            {
-                MessageBox.Show("Вы не выбрали частоту ЦП");
-            }
-            else
-            {
-                computer.cpu.Clock = ClockChoose.Text;
-                amount++;
-            }
+            computer.cpu.Clock = ClockChoose.Text;
+            amount++;
 
             if (ArchitectureX32.Checked)
             {
@@ -167,33 +181,15 @@ namespace laba2
                 computer.cpu.Architecture = ArchitectureX64.Text;
                 amount++;
             }
-            else if (ArchitectureX32.Checked == false && ArchitectureX64.Checked == false)
-            {
-                MessageBox.Show("Вы не выбрали архитектуру");
-            }
 
-            try
-            {
+            computer.cpu.L1Cache = int.Parse(textBox1.Text);
+            computer.cpu.L2Cache = int.Parse(textBox2.Text);
+            computer.cpu.L3Cache = int.Parse(textBox3.Text);
+            amount++;
 
-                int temp1 = int.Parse(textBox1.Text);
-                int temp2 = int.Parse(textBox2.Text);
-                int temp3 = int.Parse(textBox3.Text);
-                if (temp1 < 0 || temp2 < 0 || temp3 < 0)
-                {
-                    MessageBox.Show("Число меньше нуля");
-                }
-                else
-                {
-                    computer.cpu.L1Cache = temp1;
-                    computer.cpu.L2Cache = temp2;
-                    computer.cpu.L3Cache = temp3;
-                    amount++;
-                }
-            }
-            catch (Exception ex)
+            if (!ValidateCPU())
             {
-                MessageBox.Show(ex.Message);
-                amount--;
+                return;
             }
 
             if (NvidiaGPU.Checked)
