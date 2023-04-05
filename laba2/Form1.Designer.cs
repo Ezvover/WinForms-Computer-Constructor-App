@@ -38,8 +38,7 @@
             this.OutputPc = new System.Windows.Forms.ToolStripButton();
             this.SortRam = new System.Windows.Forms.ToolStripButton();
             this.SortClock = new System.Windows.Forms.ToolStripButton();
-            this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.ClearButton = new System.Windows.Forms.ToolStripButton();
             this.PredLabel = new System.Windows.Forms.ToolStripLabel();
             this.amountLabel = new System.Windows.Forms.ToolStripLabel();
@@ -47,6 +46,8 @@
             this.HideButton = new System.Windows.Forms.ToolStripButton();
             this.DateTimer = new System.Windows.Forms.Timer(this.components);
             this.ShowToolBar = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.ShowButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,8 +73,7 @@
             this.OutputPc,
             this.SortRam,
             this.SortClock,
-            this.toolStripTextBox1,
-            this.toolStripButton6,
+            this.toolStripButton1,
             this.ClearButton,
             this.PredLabel,
             this.amountLabel,
@@ -81,7 +81,7 @@
             this.HideButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(639, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(913, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -135,20 +135,15 @@
             this.SortClock.Text = "Сортировка по частоте";
             this.SortClock.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
-            // toolStripTextBox1
+            // toolStripButton1
             // 
-            this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 25);
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "toolStripButton6";
-            this.toolStripButton6.Click += new System.EventHandler(this.toolStripButton6_Click);
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click_1);
             // 
             // ClearButton
             // 
@@ -195,7 +190,7 @@
             // 
             // ShowToolBar
             // 
-            this.ShowToolBar.Location = new System.Drawing.Point(188, 12);
+            this.ShowToolBar.Location = new System.Drawing.Point(192, 12);
             this.ShowToolBar.Name = "ShowToolBar";
             this.ShowToolBar.Size = new System.Drawing.Size(259, 43);
             this.ShowToolBar.TabIndex = 16;
@@ -204,11 +199,33 @@
             this.ShowToolBar.Visible = false;
             this.ShowToolBar.Click += new System.EventHandler(this.ShowToolBar_Click);
             // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(667, 254);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(210, 122);
+            this.AddButton.TabIndex = 17;
+            this.AddButton.Text = "Добавить ПК";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // ShowButton
+            // 
+            this.ShowButton.Location = new System.Drawing.Point(667, 448);
+            this.ShowButton.Name = "ShowButton";
+            this.ShowButton.Size = new System.Drawing.Size(210, 122);
+            this.ShowButton.TabIndex = 18;
+            this.ShowButton.Text = "Показать ПК";
+            this.ShowButton.UseVisualStyleBackColor = true;
+            this.ShowButton.Click += new System.EventHandler(this.ShowButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 844);
+            this.ClientSize = new System.Drawing.Size(913, 844);
+            this.Controls.Add(this.ShowButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ShowToolBar);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.OutputTextbox);
@@ -230,8 +247,6 @@
         private ToolStripButton OutputPc;
         private ToolStripButton SortRam;
         private ToolStripButton SortClock;
-        private ToolStripTextBox toolStripTextBox1;
-        private ToolStripButton toolStripButton6;
         private ToolStripButton ClearButton;
         private ToolStripLabel PredLabel;
         private ToolStripLabel amountLabel;
@@ -239,5 +254,8 @@
         private System.Windows.Forms.Timer DateTimer;
         private ToolStripButton HideButton;
         private Button ShowToolBar;
+        private ToolStripButton toolStripButton1;
+        private Button AddButton;
+        private Button ShowButton;
     }
 }

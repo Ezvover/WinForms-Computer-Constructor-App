@@ -41,6 +41,7 @@ namespace laba2
         }
         public void Deserialization()
         {
+            computerList.Clear();
             XmlSerializer xmlSerializer = new XmlSerializer(typeof(Computer));
             string directoryPath = @"C:\Users\vovas\Desktop\repos\WinForms-Computer-Constructor-App\laba2\bin\Debug\net7.0-windows";
             string searchPattern = "computer*";
@@ -60,7 +61,6 @@ namespace laba2
                 }
             }
         }
-
 
         private void toolStripButton1_Click(object sender, EventArgs e) // aboutButton
         {
@@ -144,29 +144,10 @@ namespace laba2
 
         private void toolStripButton6_Click(object sender, EventArgs e) // SearchDrive
         {
-            PredLabel.Text = $"Вы выполнили поиск по диску";
+            PredLabel.Text = $"Вы выполнили поиск";
 
-            Deserialization();
-            string str = "";
-            List<Computer> searchList = new List<Computer>();
-            for (int i = 0; i < computerList.Count; ++i)
-            {
-                if (computerList[i].info.Drive == toolStripTextBox1.Text)
-                {
-                    str += $"Компьютер #{i} \nТип: {computerList[i].info.Type} \nРазмер: {computerList[i].info.Size} \nДиск: {computerList[i].info.Drive} \nОП: {computerList[i].info.RAM} \nПроизводитель ЦП: {computerList[i].cpu.Creator} \nМодель ЦП: {computerList[i].cpu.Model} \nКол-во ядер ЦП: {computerList[i].cpu.Cores} \nЧастота ЦП: {computerList[i].cpu.Clock} \nАрхитектура ЦП: {computerList[i].cpu.Architecture} \nL1, L2, L3 кэш: {computerList[i].cpu.L1Cache}, {computerList[i].cpu.L2Cache}, {computerList[i].cpu.L3Cache} \nПроиводитель ГК: {computerList[i].gpu.Creator} \nСерия ГК: {computerList[i].gpu.Series} \nМодель ГК: {computerList[i].gpu.Model} \nЧастота ГК: {computerList[i].gpu.Clock} \nНаличие DiretX: {computerList[i].gpu.DiretX} \nКоличество видеопамяти: {computerList[i].gpu.GPURAM} \n\n";
-                    searchList.Add(computerList[i]);
-                }
-            }
-            MessageBox.Show(str);
-
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Computer));
-            using (FileStream stream = new FileStream($"SearchComputer.xml", FileMode.OpenOrCreate))
-            {
-                foreach (var c in searchList)
-                {
-                    xmlSerializer.Serialize(stream, c);
-                }
-            }
+            Form3 form3 = new Form3();
+            form3.Show();
         }
 
         private void toolStripButton7_Click(object sender, EventArgs e) //ClearButton
@@ -194,6 +175,36 @@ namespace laba2
             toolStrip1.Visible = true;
             toolStrip1.Dock = DockStyle.Top;
         }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e) // SearchButtpn7
+        {
+            Form3 form3 = new Form3();
+            form3.Show();
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            PredLabel.Text = $"Вы создали новый компьютер";
+
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
+        }
+
+        private void ShowButton_Click(object sender, EventArgs e)
+        {
+            PredLabel.Text = $"Вы вывели на экран список созданных ПК";
+
+            this.Refresh();
+            OutputTextbox.Clear();
+            Deserialization();
+            OutputComputer();
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.Property)]
+    public class CustomValidationAttribute : Attribute
+    {
+        public string InvalidChars { get; set; }
     }
 
     [Serializable]
@@ -215,6 +226,7 @@ namespace laba2
             cpu.Series = cpuSeries;
             cpu.Model = cpuModel;
             cpu.Cores = cpuCores;
+
             cpu.Clock = cpuClock;
             cpu.Architecture = cpuArchitecture;
             cpu.L1Cache = cpuL1Cache;
@@ -264,9 +276,11 @@ namespace laba2
         public string Series { get; set; }
         public string Model { get; set; }
         public int Cores { get; set; }
+
+        [RegularExpression(@"^\d+\.\d", ErrorMessage = "Некорректное значение частоты ЦП.")]
         public string Clock { get; set; }
         public string Architecture { get; set; }
-        [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
+        [CustomValidation(InvalidChars = "9")]
         public int L1Cache { get; set; }
         [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
         public int L2Cache { get; set; }
