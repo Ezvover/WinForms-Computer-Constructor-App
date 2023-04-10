@@ -29,7 +29,7 @@ namespace laba2
                 string str = "";
                 for (int i = 0; i < computerList.Count; i++)
                 {
-                    str += $"Компьютер #{i} \nТип: {computerList[i].info.Type} \nРазмер: {computerList[i].info.Size} \nДиск: {computerList[i].info.Drive} \nОП: {computerList[i].info.RAM} \nПроизводитель ЦП: {computerList[i].cpu.Creator} \nМодель ЦП: {computerList[i].cpu.Model} \nКол-во ядер ЦП: {computerList[i].cpu.Cores} \nЧастота ЦП: {computerList[i].cpu.Clock} \nАрхитектура ЦП: {computerList[i].cpu.Architecture} \nL1, L2, L3 кэш: {computerList[i].cpu.L1Cache}, {computerList[i].cpu.L2Cache}, {computerList[i].cpu.L3Cache} \nПроиводитель ГК: {computerList[i].gpu.Creator} \nСерия ГК: {computerList[i].gpu.Series} \nМодель ГК: {computerList[i].gpu.Model} \nЧастота ГК: {computerList[i].gpu.Clock} \nНаличие DiretX: {computerList[i].gpu.DiretX} \nКоличество видеопамяти: {computerList[i].gpu.GPURAM} \n\n";
+                    str += $"Компьютер #{i} \nТип: {computerList[i].info.Type} \nРазмер: {computerList[i].info.Size} \nДиск: {computerList[i].info.Drive} \nОП: {computerList[i].info.RAM} \nПроизводитель ЦП: {computerList[i].cpu.Creator} \nМодель ЦП: {computerList[i].cpu.Model} \nКол-во ядер ЦП: {computerList[i].cpu.Cores} \nЧастота ЦП: {computerList[i].cpu.Clock} \nАрхитектура ЦП: {computerList[i].cpu.Architecture} \nL1, L2, L3 кэш: {computerList[i].cpu.L1Cache}, {computerList[i].cpu.L2Cache}, {computerList[i].cpu.L3Cache} \nПроиводитель ГК: {computerList[i].gpu.Creator} \nСерия ГК: {computerList[i].gpu.Series} \nМодель ГК: {computerList[i].gpu.Model} \nЧастота ГК: {computerList[i].gpu.Clock} \nНаличие DiretX: {computerList[i].gpu.DiretX} \nКоличество видеопамяти: {computerList[i].gpu.GPURAM} \nДата обслуживания: {computerList[i].info.Date}\n\n";
                     OutputTextbox.Text = str;
                 }
             }
@@ -201,10 +201,24 @@ namespace laba2
         }
     }
 
+
+
     [AttributeUsage(AttributeTargets.Property)]
-    public class CustomValidationAttribute : Attribute
+    public class DateValidationAttribute : ValidationAttribute
     {
-        public string InvalidChars { get; set; }
+        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        {
+            DateTime date;
+            if (DateTime.TryParse(value.ToString(), out date))
+            {
+                if (date > DateTime.Now)
+                {
+                    return new ValidationResult("Дата не может быть больше текущей даты");
+                }
+                return ValidationResult.Success;
+            }
+            return new ValidationResult("Неправильный формат даты");
+        }
     }
 
     [Serializable]
@@ -264,6 +278,8 @@ namespace laba2
         public string Size { get; set; }
         public int RAM { get; set; }
         public string Drive { get; set; }
+
+        [DateValidation(ErrorMessage = "Неправильный формат даты")]
         public string Date { get; set; }
     }
 
@@ -280,7 +296,6 @@ namespace laba2
         [RegularExpression(@"^\d+\.\d", ErrorMessage = "Некорректное значение частоты ЦП.")]
         public string Clock { get; set; }
         public string Architecture { get; set; }
-        [CustomValidation(InvalidChars = "9")]
         public int L1Cache { get; set; }
         [Range(1, 5, ErrorMessage = "Максимум 5 символов")]
         public int L2Cache { get; set; }

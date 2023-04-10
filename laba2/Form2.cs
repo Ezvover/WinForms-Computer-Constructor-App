@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -147,7 +148,18 @@ namespace laba2
                 MessageBox.Show("Вы не выбрали тип накопителя");
             }
 
+
             computer.info.Date = dateTimePicker1.Text;
+            var validationResults = new List<ValidationResult>();
+            var context = new ValidationContext(computer, serviceProvider: null, items: null);
+            bool isValid = Validator.TryValidateObject(computer, context, validationResults, true);
+            if (!isValid)
+            {
+                foreach (var validationResult in validationResults)
+                {
+                    MessageBox.Show(validationResult.ErrorMessage);
+                }
+            }
 
             if (CreatorIntel.Checked)
             {
